@@ -39,21 +39,21 @@ end
 
 planets = {
   mercury: Planet.new("Mercury", "bluish rocky", "heavy metal", "zero", "small", "43 million"),
-  venus: Planet.new("Venus", "blueish", "molten liquid iron core", "zero", "medium", "67 million"),
-  earth: Planet.new("Earth", "blue and green", "molten liquid iron core", "zero", "medium", "93 million"),
-  mars: Planet.new("Mars", "red", "molten liquid iron core", "zero", "medium", "10"),
-  jupiter: Planet.new("Jupiter", "Brown", "Ice", "None", "Medium", "10"),
-  saturn: Planet.new("Saturn", "Yellow", "Ice", "None", "Medium", "10"),
-  uranus: Planet.new("Uranus", "blue", "methane", "zero", "medium", "1.8 billion"),
-  neptune: Planet.new("Neptune", "Green", "Ice", "zero", "Medium", "10"),
-  pluto: Planet.new("Pluto", "Purple", "Ice", "zero", "small", "10")
+  venus: Planet.new("Venus", "blueish", "a molten liquid iron core with a terrestrial surface", "zero", "medium", "67 million"),
+  earth: Planet.new("Earth", "blue and green", "a molten liquid iron core with a terrestrial surface", "zero", "medium", "93 million"),
+  mars: Planet.new("Mars", "red", "a molten liquid iron core with a cold desert surface", "zero", "small", "142 million"),
+  jupiter: Planet.new("Jupiter", "brown and red", "gas", "three", "large", "484 million"),
+  saturn: Planet.new("Saturn", "icy blue", "hydrogen and helium", "seven", "Medium", "886 million"),
+  uranus: Planet.new("Uranus", "icy blue", "methane", "zero", "medium", "1.8 billion"),
+  neptune: Planet.new("Neptune", "icy blue", "hydrogen and helium", "six", "medium-large", "2.8 billion"),
+  pluto: Planet.new("Pluto", "purple", "ice", "zero", "small", "3.7 billion")
 }
 
 name = ''
 while name != 'exit' do
 
 
-  puts "What planet from our solar system would you like to know about?"
+  puts "What planet from our solar system would you like to know about? (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto)."
 
   name = gets.chomp
 
@@ -63,9 +63,7 @@ while name != 'exit' do
     puts "#{name.capitalize} is a #{planets[name.downcase.to_sym].color} planet. It is made up of #{planets[name.downcase.to_sym].composition} and has #{planets[name.downcase.to_sym].rings} rings. #{name.capitalize} is a #{planets[name.downcase.to_sym].size} sized planet and is #{planets[name.downcase.to_sym].distance_from_sun} miles from the sun."
   else
     puts "Please put a planet from our solar system"
-    puts "What planet from our solar system would you like to know about? (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto)."
   end
-
 
 
 end
