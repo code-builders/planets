@@ -1,9 +1,9 @@
 class Planet
 
-  def initialize(name, radius, age, distance)
+  def initialize(name, radius, period, distance)
     @name = name
     @radius = radius
-    @age = age
+    @orbital_period = period
     @distance_from_the_sun = distance
   end
 
@@ -15,8 +15,8 @@ class Planet
     @radius
   end
 
-  def age
-    @age
+  def orbital_period
+    @orbital_period
   end
 
   def distance_from_the_sun
@@ -27,10 +27,12 @@ end
 
 list = ["Mercury", "Mars", "Pluto", "Earth", "Venus", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
-mercury = Planet.new("Mercury", 1516, "4.5", 35980000)
+mercury = Planet.new("Mercury", "1,516", "88", "35,980,000")
+mars = Planet.new("Mars", "2,106", "687", "141,600,000")
 
 planets = {
-  "Mercury" => mercury
+  "Mercury" => mercury,
+  "Mars" => mars
   }
 
 puts "What planet would you like to learn about?"
@@ -43,7 +45,7 @@ while true
     break
   end
 
-  print "Here is some of the info about #{answer}: it's age is #{planets[answer].age} billion years, "
+  print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period} days, "
   print "radius is #{planets[answer].radius} miles, "
   puts "the distance from \n the sun is #{planets[answer].distance_from_the_sun} miles."
   puts "Give me another planet!"
