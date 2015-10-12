@@ -1,26 +1,12 @@
 class Planet
 
-  def initialize(name, radius, period, distance)
+  attr_reader :name, :radius, :orbital_period, :distance_from_sun
+
+  def initialize(name, radius, orbital_period, distance)
     @name = name
     @radius = radius
-    @orbital_period = period
+    @orbital_period = orbital_period
     @distance_from_sun = distance
-  end
-
-  def name
-    @name
-  end
-
-  def radius
-    @radius
-  end
-
-  def orbital_period
-    @orbital_period
-  end
-
-  def distance_from_sun
-    @distance_from_sun
   end
 
 end
@@ -34,7 +20,6 @@ jupiter = Planet.new("Jupiter", "43,441", "12 years", "483,800,000")
 saturn = Planet.new("Saturn", "36,184", "29 years", "890,700,000")
 uranus = Planet.new("Uranus", "15,759", "84 years", "1,787,000,000")
 neptune = Planet.new("Neptune", "15,299", "165 years", "2,795,000,000")
-
 
 planets = {
   "Mercury" => mercury,
