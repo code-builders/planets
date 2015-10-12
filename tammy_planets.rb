@@ -1,9 +1,10 @@
 class Planet
 
-  def initialize(name, radius, mass)
+  def initialize(name, radius, age, distance)
     @name = name
     @radius = radius
-    @mass = mass
+    @age = age
+    @distance_from_the_sun = distance
   end
 
   def name
@@ -18,5 +19,11 @@ class Planet
     @mass
   end
 
+  def distance_from_the_sun
+    @distance_from_the_sun
+  end
+
 end
+
+planets = ["Mercury", "Mars", "Pluto", "Earth", "Venus", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
