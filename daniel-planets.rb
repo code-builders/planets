@@ -52,7 +52,7 @@ p3 = Planet.new("Earth",3,1,1,".....",1,365.26)
 planets.push(p3)
 p4 = Planet.new("Mars",4,1.5,0.11,"2nd millenium B.C.E.",2,686.98)
 planets.push(p4)
-p5 = Planet.new("Jupiter",5,5.2,317.8,"2nd millenium B.C.E.",67,4332.82)
+p5 = Planet.new("Jupiter",5,5.2,317.8,"2nd millenium B.C.E.",67,  4332.82)
 planets.push(p5)
 p6 = Planet.new("Saturn",6,9.5,95.2,"2nd millenium B.C.E.",62,10755.7)
 planets.push(p6)
@@ -61,19 +61,45 @@ planets.push(p7)
 p8 = Planet.new("Neptune",8,30.1,17.2,"January 24, 1801",14,60190.03)
 planets.push(p8)
 
-puts "TESTING:"
-puts "number of planets: #{planets.size}"
-puts "Mercury - index from sun : #{planets[0].index_from_sun}"
-puts "Uranus - planetary mass: #{planets[6].mass}"
-puts "5th from sun - name and distance from sun (AU): #{planets[5].name},#{planets[5].distance_from_sun}"
-puts "Neptune's number of Earth days: #{planets[7].days_in_a_year}."
-puts "Date of discovery of Earth: #{planets[2].date_discovered}."
+# puts "TESTING:"
+# puts "number of planets: #{planets.size}"
+# puts "Mercury - index from sun : #{planets[0].index_from_sun}"
+# puts "Uranus - planetary mass: #{planets[6].mass}"
+# puts "5th from sun - name and distance from sun (AU): #{planets[5].name},#{planets[5].distance_from_sun}"
+# puts "Neptune's number of Earth days: #{planets[7].days_in_a_year}."
+# puts "Date of discovery of Earth: #{planets[2].date_discovered}."
 # how do I get all values for a given attribute to display?
 # i.e. how do I list all distances from sun by calling on instance variables?
 
 ########################################################################
 
 #v2: user can query index of planets
+
+# puts p1.inspect
+# puts p1.name
+# puts p1.index_from_sun
+
+puts
+puts "Welcome to PlanetApp!\n\n"
+puts "Which planet would you like to learn about?\n\n"
+
+planets.map {|p| p.name} #Thanks to Jon for helping me get this part
+new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
+puts new_arr
+
+  ##don't get why this block doesn't work like single line above.
+  # puts planets.map do |p|
+  #   p.name
+  # end
+
+  # puts planets.map(&:name).map(&:upcase) #Also learned this approach from Jon!
+
+input = gets.chomp
+
+puts planets[input.to_i-1].mass # this looks up planet mass based on user input
+
+# puts "The mass of #{user_choice} is "
+
 
 ########################################################################
 
