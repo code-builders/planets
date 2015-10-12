@@ -1,32 +1,28 @@
-## GOAL:
-# Create a Planet class with a name attribute. You should be able to instantiate a new Planet object with an associated name.
-
-## Wave 1
-### Primary Requirements
-# Get creative! Give each instance of Planet diameters, mass, moons.. whatever!
-# You should be able to create many different planets with different properties, like Mercury, Venus, Earth, Mars, Jupiter, etc.
-
-###Optional Enhancements
-
-# Give each planet a @distance_from_the_sun attribute
-# Write a program that asks for user input to query the planets:
-  # First, ask the user to select a planet they'd like to learn about.
-  # Present the user with a list of planets from which they can choose. Something like:
-  # 1. Mercury, 2. Venus, 3. Earth, 4. Secret Earth, 5. Mars, 6. Jupiter, ... 13. Exit
-  # Provide the user with well formatted information about the planet (diameter, mass, number of moons, primary export, etc.)
-  # Then ask the user for another planet.
+planets = []
 
 class Planet
 
-  def initialize(n)
-    @name = n
+  def initialize(na,ifs,dfs,ma)
+    @name = na
+    @index_from_sun = ifs
+    @distance_from_sun = dfs
+    @mass = ma
   end
 
   def name
     @name
   end
 
+  def index_from_sun
+    @index_from_sun
+  end
+
+  def distance_from_sun
+    @distance_from_sun #measured in AU ('Astronomical Units')
+  end
+
   def mass
+    @mass #relative to mass of Earth
   end
 
   def date_discovered
@@ -41,10 +37,66 @@ class Planet
   def oxygen_content
   end
 
-  def order_from_sun
-  end
-
-  def distance_from_sun
-  end
-
 end
+
+#v1: instantiate planets by hard-coding them here on back end
+
+p1 = Planet.new("Mercury",1,0.4,0.06)
+planets.push(p1)
+p2 = Planet.new("Venus",2,0.7,0.82)
+planets.push(p2)
+p3 = Planet.new("Earth",3,1,1)
+planets.push(p3)
+p4 = Planet.new("Mars",4,1.5,0.11)
+planets.push(p4)
+p5 = Planet.new("Jupiter",5,5.2,317.8)
+planets.push(p5)
+p6 = Planet.new("Saturn",6,9.5,95.2)
+planets.push(p6)
+p7 = Planet.new("Uranus",7,19.2,14.6)
+planets.push(p7)
+p8 = Planet.new("Neptune",8,30.1,17.2)
+planets.push(p8)
+
+puts "TESTING:"
+# puts "solar system includes: #{planets}"
+puts "number of planets: #{planets.size}"
+puts "Mercury - index from sun : #{planets[0].index_from_sun}"
+puts "Uranus - planetary mass: #{planets[6].mass}"
+puts "5th from sun - name and distance from sun (AU): #{planets[5].name},#{planets[5].distance_from_sun}"
+# puts "all planets - distances from sun"
+# puts solar_system[0].name
+# puts "second planet - mass: #{planets[1].mass}"
+# puts solar_system[1].mass
+
+########################################################################
+
+#v2: user can query index of planets
+
+########################################################################
+
+#v3: God mode available: user can search index or create own planet
+
+#[reorg all to if/elsif/else/end block, similar to the one in dinner party app]
+
+#puts "Do you want to create a planet or search the library of planets?"
+
+# new_planet_count = 0
+#
+# until new_planet_count == 2
+#
+#   puts "What do you want to call the planet?"
+#
+#   name = gets.chomp
+#
+#   puts "What is the mass of the planet?"
+#
+#   mass = gets.chomp
+#
+#[insert other questions to define attributes of new planet]
+#
+#   p = Planet.new(name,mass)
+#   solar_system.push(p)
+#   planet_count += 1
+# @end = (new_planet_count == 2) "Sorry, no more room in the solar system!"
+# end
