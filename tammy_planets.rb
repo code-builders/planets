@@ -54,12 +54,14 @@ puts "Here are your options: #{planets.keys.join(', ')}."
 while true
   answer = gets.chomp.capitalize
 
-  if answer == 'Done' || answer == 'Exit'
+  if planets.keys.include?(answer)
+    print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period}, "
+    print "radius is #{planets[answer].radius} miles, "
+    puts "\nthe distance from sun is #{planets[answer].distance_from_sun} miles."
+    puts "Give me another planet! You can also type either done or exit."
+  elsif answer == 'Done' || answer == 'Exit'
     break
+  else
+    puts "Please clarify which planet you're interested to learn about?"
   end
-
-  print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period}, "
-  print "radius is #{planets[answer].radius} miles, "
-  puts "\nthe distance from sun is #{planets[answer].distance_from_sun} miles."
-  puts "Give me another planet! You can also type either done or exit."
 end
