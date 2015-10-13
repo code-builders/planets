@@ -2,11 +2,11 @@ class Planet
 
   attr_reader :name, :radius, :orbital_period, :distance_from_sun
 
-  def initialize(attr)
-    @name = attr[:name]
-    @radius = attr[:radius]
-    @orbital_period = attr[:orbital_period]
-    @distance_from_sun = attr[:distance_from_sun]
+  def initialize(attrs)
+    @name              = attrs[:name]
+    @radius            = attrs[:radius]
+    @orbital_period    = attrs[:orbital_period]
+    @distance_from_sun = attrs[:distance_from_sun]
   end
 
 end
@@ -46,9 +46,7 @@ class SolarSystem
   end
 
   def present?(answer)
-    if @planets.keys.include?(answer)
-      true
-    end
+    true if @planets.keys.include?(answer)
   end
 
 end
@@ -62,10 +60,10 @@ while true
   answer = gets.chomp.capitalize
   if s.present?(answer)
     the_planet = s.find_planet(answer)
-      print "Here is some of the info about #{answer}: it's orbital period is #{the_planet.orbital_period}, "
-      puts "radius is #{the_planet.radius} miles, "
-      puts "the distance from sun is #{the_planet.distance_from_sun} miles."
-      puts "Give me another planet! You can also type either done or exit."
+    print "Here is some of the info about #{answer}: it's orbital period is #{the_planet.orbital_period}, "
+    puts "radius is #{the_planet.radius} miles, "
+    puts "the distance from sun is #{the_planet.distance_from_sun} miles."
+    puts "Give me another planet! You can also type either done or exit."
   elsif answer == 'Done' || answer == 'Exit'
     break
   else
