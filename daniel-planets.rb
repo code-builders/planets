@@ -21,11 +21,11 @@ class Planet
   end
 
   def distance_from_sun
-    @distance_from_sun #measured in AU ('Astronomical Units')
+    @distance_from_sun # measured in AU ('Astronomical Units')
   end
 
   def mass
-    @mass #relative to mass of Earth
+    @mass # relative to mass of Earth
   end
 
   def date_discovered
@@ -37,12 +37,12 @@ class Planet
   end
 
   def days_in_a_year
-    @days_in_a_year #Earth days
+    @days_in_a_year # Earth days
   end
 
 end
 
-#v1: instantiate planets by hard-coding them here on back end
+# v1: instantiate planets by hard-coding them here on back end
 
 p1 = Planet.new("Mercury",1,0.4,0.06,"2nd millenium B.C.E.",0,87.97)
 planets.push(p1)
@@ -61,68 +61,35 @@ planets.push(p7)
 p8 = Planet.new("Neptune",8,30.1,17.2,"January 24, 1801",14,60190.03)
 planets.push(p8)
 
-# puts "TESTING:"
-# puts "number of planets: #{planets.size}"
-# puts "Mercury - index from sun : #{planets[0].index_from_sun}"
-# puts "Uranus - planetary mass: #{planets[6].mass}"
-# puts "5th from sun - name and distance from sun (AU): #{planets[5].name},#{planets[5].distance_from_sun}"
-# puts "Neptune's number of Earth days: #{planets[7].days_in_a_year}."
-# puts "Date of discovery of Earth: #{planets[2].date_discovered}."
 # how do I get all values for a given attribute to display?
 # i.e. how do I list all distances from sun by calling on instance variables?
 
-########################################################################
+###############################################################
 
-#v2: user can query index of planets
-
-# puts p1.inspect
-# puts p1.name
-# puts p1.index_from_sun
+# v2: user can query index of planets
 
 puts
 puts "Welcome to PlanetApp!\n\n"
-puts "Which planet would you like to learn about?\n\n"
-
-planets.map {|p| p.name} #Thanks to Jon for helping me get this part
-new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
-puts new_arr
-
-  ##don't get why this block doesn't work like single line above:
-    # puts planets.map do |p|
-    #   p.name
-    # end
-
-  # puts planets.map(&:name).map(&:upcase) #Also learned this approach from Jon!
-
-input = gets.chomp
-
-display = planets[input.to_i-1]
-
-planet_details =
-  puts "\n\nHere are some facts about #{display.name}:\n
-  \t~* Index from Sun: #{display.index_from_sun}
-  \t~* Distance from Sun in AU ('Astronomical Units'): #{display.distance_from_sun}
-  \t~* Mass (relative to mass of Earth): #{display.mass}
-  \t~* Date Discovered: #{display.date_discovered}
-  \t~* Number of moons: #{display.number_of_moons}
-  \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
-
-puts planet_details
-
-puts "Would you like to learn about any other planets?"
 
 while true
+  puts "Enter a planet's number to learn more, or 86 to exit\n\n"
+  planets.map {|p| p.name}
+  new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
+  puts new_arr
+  puts "86 - Exit"
+  puts
 
-  answer = gets.chomp
+  input = gets.chomp
 
-  if answer.downcase == "no"
-    puts "Thanks for using PlanetApp!"
-    break
-  elsif answer.downcase == "yes"
-    puts "Which planet would you like to learn about?\n\n"
-    puts new_arr
-    input = gets.chomp
+  if input == "86"
+
+    puts "\nThanks for using PlanetApp!\n"
+    exit
+
+  else
+
     display = planets[input.to_i-1]
+
     planet_details =
       puts "\n\nHere are some facts about #{display.name}:\n
       \t~* Index from Sun: #{display.index_from_sun}
@@ -131,22 +98,20 @@ while true
       \t~* Date Discovered: #{display.date_discovered}
       \t~* Number of moons: #{display.number_of_moons}
       \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
+
     puts planet_details
-    puts "Thanks for using PlanetApp!"
-    break
-  else
-    puts "please answer 'yes' or 'no'."
+
   end
 
 end
 
 ########################################################################
 
-#v3: God mode available: user can search index or create own planet
+# v?: God mode available: user can search index or create own planet
 
-#[reorg all to if/elsif/else/end block, similar to the one in dinner party app]
+# [reorg all to if/elsif/else/end block, similar to the one in dinner party app]
 
-#puts "Do you want to create a planet or search the library of planets?"
+# puts "Do you want to create a planet or search the library of planets?"
 
 # new_planet_count = 0
 #
@@ -160,7 +125,7 @@ end
 #
 #   mass = gets.chomp
 #
-#[insert other questions to define attributes of new planet]
+# [insert other questions to define attributes of new planet]
 #
 #   p = Planet.new(name,mass)
 #   solar_system.push(p)
