@@ -1,109 +1,105 @@
-planets = []
+solar_system = [
+  {name: "Mercury",index_from_sun: 1,distance_from_sun: 0.4,
+   mass: 0.06,date_discovered: "2nd millenium B.C.E.",
+   number_of_moons: 0,days_in_a_year: 87.97},
 
-class Planet
+  {name: "Venus",index_from_sun: 2,distance_from_sun: 0.7,
+   mass: 0.82,date_discovered: "2nd millenium B.C.E.",
+   number_of_moons: 0,days_in_a_year: 224.7},
 
-  def initialize(na,ifs,dfs,ma,dd,nom,diya)
-    @name = na
-    @index_from_sun = ifs
-    @distance_from_sun = dfs
-    @mass = ma
-    @date_discovered = dd
-    @number_of_moons = nom
-    @days_in_a_year = diya
-  end
+  {name: "Earth",index_from_sun: 3,distance_from_sun: 1,
+   mass: 1,date_discovered: "......",
+   number_of_moons: 1,days_in_a_year: 365.26},
 
-  def name
-    @name
-  end
+  {name: "Mars",index_from_sun: 4,distance_from_sun: 1.5,
+   mass: 0.11,date_discovered: "2nd millenium B.C.E.",
+   number_of_moons: 2,days_in_a_year: 686.98},
 
-  def index_from_sun
-    @index_from_sun
-  end
+  {name: "Jupiter",index_from_sun: 5,distance_from_sun: 5.2,
+   mass: 317.8,date_discovered: "2nd millenium B.C.E.",
+   number_of_moons: 67,days_in_a_year: 4332.82},
 
-  def distance_from_sun
-    @distance_from_sun # measured in AU ('Astronomical Units')
-  end
+  {name: "Saturn",index_from_sun: 6,distance_from_sun: 9.5,
+   mass: 95.2,date_discovered: "2nd millenium B.C.E.",
+   number_of_moons: 62,days_in_a_year: 10755.7},
 
-  def mass
-    @mass # relative to mass of Earth
-  end
+  {name: "Uranus",index_from_sun: 7,distance_from_sun: 19.2,
+   mass: 14.6,date_discovered: "April 26, 1781",
+   number_of_moons: 27,days_in_a_year: 30687.15},
 
-  def date_discovered
-    @date_discovered
-  end
+  {name: "Neptune",index_from_sun: 8,distance_from_sun: 30.1,
+   mass: 17.2,date_discovered: "January 24, 1801",
+   number_of_moons: 14,days_in_a_year: 60190.03}
+]
 
-  def number_of_moons
-    @number_of_moons
-  end
+# TESTING TO MAKE SURE HASH VALUES CAN BE CALLED UPON
+# puts solar_system
+# puts
+# puts solar_system.map {|p| p[:name]} # <-- this works
+# puts solar_system.map {|p| p[:index_from_sun]} # <-- this works
 
-  def days_in_a_year
-    @days_in_a_year # Earth days
+class Planet #now attributes come from constructor
+
+  attr_accessor :name,
+                :index_from_sun,
+                :distance_from_sun, #in AU ('Astronomical Units')
+                :mass, #relative to mass of Earth
+                :date_discovered,
+                :number_of_moons,
+                :days_in_a_year #Earth days
+
+  def initialize(attrs)
+    @name = attrs[:name]
+    @index_from_sun = attrs[:index_from_sun]
+    @distance_from_sun = attrs[:distance_from_sun]
+    @mass = attrs[:mass]
+    @date_discovered = attrs[:date_discovered]
+    @number_of_moons = attrs[:number_of_moons]
+    @days_in_a_year = attrs[:days_in_a_year]
   end
 
 end
-
-# v1: instantiate planets by hard-coding them here on back end
-
-p1 = Planet.new("Mercury",1,0.4,0.06,"2nd millenium B.C.E.",0,87.97)
-planets.push(p1)
-p2 = Planet.new("Venus",2,0.7,0.82,"2nd millenium B.C.E.",0,224.7)
-planets.push(p2)
-p3 = Planet.new("Earth",3,1,1,".....",1,365.26)
-planets.push(p3)
-p4 = Planet.new("Mars",4,1.5,0.11,"2nd millenium B.C.E.",2,686.98)
-planets.push(p4)
-p5 = Planet.new("Jupiter",5,5.2,317.8,"2nd millenium B.C.E.",67,  4332.82)
-planets.push(p5)
-p6 = Planet.new("Saturn",6,9.5,95.2,"2nd millenium B.C.E.",62,10755.7)
-planets.push(p6)
-p7 = Planet.new("Uranus",7,19.2,14.6,"April 26, 1781",27,30687.15)
-planets.push(p7)
-p8 = Planet.new("Neptune",8,30.1,17.2,"January 24, 1801",14,60190.03)
-planets.push(p8)
-
-# how do I get all values for a given attribute to display?
-# i.e. how do I list all distances from sun by calling on instance variables?
 
 ###############################################################
 
 # v2: user can query index of planets
 
-puts
-puts "Welcome to PlanetApp!\n\n"
-
-while true
-  puts "Enter a planet's number to learn more, or 86 to exit\n\n"
-  planets.map {|p| p.name}
-  new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
-  puts new_arr
-  puts "86 - Exit"
-  puts
-
-  input = gets.chomp
-
-  if input == "86"
-
-    puts "\nThanks for using PlanetApp!\n"
-    exit
-
-  else
-
-    display = planets[input.to_i-1]
-
-    planet_details =
-      puts "\n\nHere are some facts about #{display.name}:\n
-      \t~* Index from Sun: #{display.index_from_sun}
-      \t~* Distance from Sun in AU ('Astronomical Units'): #{display.distance_from_sun}
-      \t~* Mass (relative to mass of Earth): #{display.mass}
-      \t~* Date Discovered: #{display.date_discovered}
-      \t~* Number of moons: #{display.number_of_moons}
-      \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
-
-    puts planet_details
-
-  end
-
-end
+# puts
+# puts "Welcome to PlanetApp!\n\n"
+#
+# while true
+#   puts "Enter a planet's number to learn more, or 86 to exit\n\n"
+#   planets.map {|p| p.name}
+#   new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
+#   puts new_arr
+#   puts "86 - Exit"
+#   puts
+#
+#   input = gets.chomp
+#
+#   if input == "86"
+#
+#     puts "\nThanks for using PlanetApp!\n"
+#     exit
+#
+#   else
+#
+#     display = planets[input.to_i-1]
+#
+#     planet_details =
+#       puts "\n\nHere are some facts about #{display.name}:\n
+#       \t~* Index from Sun: #{display.index_from_sun}
+#       \t~* Distance from Sun in AU ('Astronomical Units'): #{display.distance_from_sun}
+#       \t~* Mass (relative to mass of Earth): #{display.mass}
+#       \t~* Date Discovered: #{display.date_discovered}
+#       \t~* Number of moons: #{display.number_of_moons}
+#       \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
+#
+#     puts planet_details
+#
+#   end
+#
+# end
 
 ########################################################################
 
