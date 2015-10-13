@@ -47,10 +47,7 @@ class SolarSystem
 
   def present?(answer)
     if @planets.keys.include?(answer)
-      print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period}, "
-      puts "radius is #{planets[answer].radius} miles, "
-      puts "the distance from sun is #{planets[answer].distance_from_sun} miles."
-      puts "Give me another planet! You can also type either done or exit."
+      true
     end
   end
 
@@ -63,8 +60,13 @@ puts "Here are your options: #{planets.keys.join(', ')}."
 
 while true
   answer = gets.chomp.capitalize
-  s.present?(answer)
-  if answer == 'Done' || answer == 'Exit'
+  if s.present?(answer)
+    the_planet = s.find_planet(answer)
+      print "Here is some of the info about #{answer}: it's orbital period is #{the_planet.orbital_period}, "
+      puts "radius is #{the_planet.radius} miles, "
+      puts "the distance from sun is #{the_planet.distance_from_sun} miles."
+      puts "Give me another planet! You can also type either done or exit."
+  elsif answer == 'Done' || answer == 'Exit'
     break
   else
     puts "Please clarify which planet you're interested to learn about?"
