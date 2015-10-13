@@ -33,18 +33,38 @@ planets = {
   "Neptune" => neptune
 }
 
+class SolarSystem
+
+  attr_reader :planets
+
+  def initialize(attr)
+    @planets = attr
+  end
+
+  def find_planet(answer)
+    @planets[answer]
+  end
+
+  def present?(answer)
+    if @planets.keys.include?(answer)
+      print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period}, "
+      puts "radius is #{planets[answer].radius} miles, "
+      puts "the distance from sun is #{planets[answer].distance_from_sun} miles."
+      puts "Give me another planet! You can also type either done or exit."
+    end
+  end
+
+end
+
+s = SolarSystem.new(planets)
+
 puts "What planet would you like to learn about?"
 puts "Here are your options: #{planets.keys.join(', ')}."
 
 while true
   answer = gets.chomp.capitalize
-
-  if planets.keys.include?(answer)
-    print "Here is some of the info about #{answer}: it's orbital period is #{planets[answer].orbital_period}, "
-    puts "radius is #{planets[answer].radius} miles, "
-    puts "the distance from sun is #{planets[answer].distance_from_sun} miles."
-    puts "Give me another planet! You can also type either done or exit."
-  elsif answer == 'Done' || answer == 'Exit'
+  s.present?(answer)
+  if answer == 'Done' || answer == 'Exit'
     break
   else
     puts "Please clarify which planet you're interested to learn about?"
