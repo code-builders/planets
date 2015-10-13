@@ -87,19 +87,58 @@ planets.map {|p| p.name} #Thanks to Jon for helping me get this part
 new_arr = planets.map {|p| "#{p.index_from_sun} - #{p.name}"}
 puts new_arr
 
-  ##don't get why this block doesn't work like single line above.
-  # puts planets.map do |p|
-  #   p.name
-  # end
+  ##don't get why this block doesn't work like single line above:
+    # puts planets.map do |p|
+    #   p.name
+    # end
 
   # puts planets.map(&:name).map(&:upcase) #Also learned this approach from Jon!
 
 input = gets.chomp
 
-puts planets[input.to_i-1].mass # this looks up planet mass based on user input
+display = planets[input.to_i-1]
 
-# puts "The mass of #{user_choice} is "
+planet_details =
+  puts "\n\nHere are some facts about #{display.name}:\n
+  \t~* Index from Sun: #{display.index_from_sun}
+  \t~* Distance from Sun in AU ('Astronomical Units'): #{display.distance_from_sun}
+  \t~* Mass (relative to mass of Earth): #{display.mass}
+  \t~* Date Discovered: #{display.date_discovered}
+  \t~* Number of moons: #{display.number_of_moons}
+  \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
 
+puts planet_details
+
+puts "Would you like to learn about any other planets?"
+
+while true
+
+  answer = gets.chomp
+
+  if answer.downcase == "no"
+    puts "Thanks for using PlanetApp!"
+    break
+  elsif answer.downcase == "yes"
+    puts "Which planet would you like to learn about?\n\n"
+    puts new_arr
+    input = gets.chomp
+    display = planets[input.to_i-1]
+    planet_details =
+      puts "\n\nHere are some facts about #{display.name}:\n
+      \t~* Index from Sun: #{display.index_from_sun}
+      \t~* Distance from Sun in AU ('Astronomical Units'): #{display.distance_from_sun}
+      \t~* Mass (relative to mass of Earth): #{display.mass}
+      \t~* Date Discovered: #{display.date_discovered}
+      \t~* Number of moons: #{display.number_of_moons}
+      \t~* Days in a year (in Earth days): #{display.days_in_a_year}\n"
+    puts planet_details
+    puts "Thanks for using PlanetApp!"
+    break
+  else
+    puts "please answer 'yes' or 'no'."
+  end
+
+end
 
 ########################################################################
 
