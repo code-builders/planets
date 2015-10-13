@@ -3,12 +3,12 @@ class Planet
   attr_accessor :name, :color, :composition, :rings, :size, :distance_from_sun
 
   def initialize(attr)
-    @name        = attr[:name],
-    @color       = attr[:color],
-    @composition = attr[:composition],
-    @rings       = attr[:rings],
-    @size        = attr[:size],
-    @distance    = attr[:distance_from_sun]
+    @name                 = attr[:name],
+    @color                = attr[:color],
+    @composition          = attr[:composition],
+    @rings                = attr[:rings],
+    @size                 = attr[:size],
+    @distance_from_sun    = attr[:distance_from_sun]
   end
 
 end
