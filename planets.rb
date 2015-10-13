@@ -1,52 +1,29 @@
 # class definition
 class Planet
+  attr_accessor :name, :color, :composition, :rings, :size, :distance_from_sun
 
-  def initialize(n,c, comp, r, s, d)
-    @name = n
-    @color = c
-    @composition = comp
-    @rings = r
-    @size = s
-    @distance = d
-  end
-
-  def name
-    @name
-  end
-
-  def color
-    @color
-  end
-
-  def composition
-    @composition
-  end
-
-  def rings
-    @rings
-  end
-
-  def size
-    @size
-  end
-
-  def distance_from_sun
-    @distance
+  def initialize(attr)
+    @name        = attr[:name],
+    @color       = attr[:color],
+    @composition = attr[:composition],
+    @rings       = attr[:rings],
+    @size        = attr[:size],
+    @distance    = attr[:distance_from_sun]
   end
 
 end
 
 
 planets = {
-  mercury: Planet.new("Mercury", "bluish rocky", "heavy metal", "zero", "small", "43 million"),
-  venus: Planet.new("Venus", "blueish", "a molten liquid iron core with a terrestrial surface", "zero", "medium", "67 million"),
-  earth: Planet.new("Earth", "blue and green", "a molten liquid iron core with a terrestrial surface", "zero", "medium", "93 million"),
-  mars: Planet.new("Mars", "red", "a molten liquid iron core with a cold desert surface", "zero", "small", "142 million"),
-  jupiter: Planet.new("Jupiter", "brown and red", "gas", "three", "large", "484 million"),
-  saturn: Planet.new("Saturn", "icy blue", "hydrogen and helium", "seven", "Medium", "886 million"),
-  uranus: Planet.new("Uranus", "icy blue", "methane", "zero", "medium", "1.8 billion"),
-  neptune: Planet.new("Neptune", "icy blue", "hydrogen and helium", "six", "medium-large", "2.8 billion"),
-  pluto: Planet.new("Pluto", "purple", "ice", "zero", "small", "3.7 billion")
+  mercury: Planet.new(name: "Mercury", color: "bluish rocky", composition: "heavy metal", rings: "zero", size: "small", distance_from_sun: "43 million"),
+  venus: Planet.new(name: "Venus", color: "blueish", composition: "a molten liquid iron core with a terrestrial surface", rings: "zero", size: "medium", distance_from_sun: "67 million"),
+  earth: Planet.new(name: "Earth", color: "blue and green", composition: "a molten liquid iron core with a terrestrial surface", rings: "zero", size: "medium", distance_from_sun: "93 million"),
+  mars: Planet.new(name: "Mars", color: "red", composition: "a molten liquid iron core with a cold desert surface", rings: "zero", size: "small", distance_from_sun: "142 million"),
+  jupiter: Planet.new(name: "Jupiter", color: "brown and red", composition: "gas", rings: "three", size: "large", distance_from_sun: "484 million"),
+  saturn: Planet.new(name: "Saturn", color: "icy blue", composition: "hydrogen and helium", rings: "seven", size: "large", distance_from_sun: "886 million"),
+  uranus: Planet.new(name: "Uranus", color: "icy blue", composition: "methane", rings: "zero", size: "medium", distance_from_sun: "1.8 billion"),
+  neptune: Planet.new(name: "Neptune", color: "icy blue", composition: "hydrogen and helium", rings: "six", size: "medium-large", distance_from_sun: "2.8 billion"),
+  pluto: Planet.new(name: "Pluto", color: "purple", composition: "ice", rings: "zero", size: "small", distance_from_sun: "3.7 billion")
 }
 
 name = ''
