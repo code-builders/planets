@@ -2,24 +2,24 @@ class Planet
 
   attr_reader :name, :radius, :orbital_period, :distance_from_sun
 
-  def initialize(name, radius, orbital_period, distance)
-    @name = name
-    @radius = radius
-    @orbital_period = orbital_period
-    @distance_from_sun = distance
+  def initialize(attr)
+    @name = attr[:name]
+    @radius = attr[:radius]
+    @orbital_period = attr[:orbital_period]
+    @distance_from_sun = attr[:distance_from_sun]
   end
 
 end
 
-mercury = Planet.new("Mercury", "1,516 days", "88", "35,980,000")
-mars = Planet.new("Mars", "2,106", "687 days", "141,600,000")
-pluto = Planet.new("Pluto", "737", "248 years", "3,670,050,000")
-earth = Planet.new("Earth", "3,959", "365 days", "92,960,000")
-venus = Planet.new("Venus", "3,760", "225 days", "67,240,000")
-jupiter = Planet.new("Jupiter", "43,441", "12 years", "483,800,000")
-saturn = Planet.new("Saturn", "36,184", "29 years", "890,700,000")
-uranus = Planet.new("Uranus", "15,759", "84 years", "1,787,000,000")
-neptune = Planet.new("Neptune", "15,299", "165 years", "2,795,000,000")
+mercury = Planet.new name: "Mercury", radius: "1,516 days", orbital_period: "88", distance_from_sun: "35,980,000"
+mars    = Planet.new name: "Mars", radius: "2,106", orbital_period: "687 days", distance_from_sun: "141,600,000"
+pluto   = Planet.new name: "Pluto", radius: "737", orbital_period: "248 years", distance_from_sun: "3,670,050,000"
+earth   = Planet.new name: "Earth", radius: "3,959", orbital_period: "365 days", distance_from_sun: "92,960,000"
+venus   = Planet.new name: "Venus", radius: "3,760", orbital_period: "225 days", distance_from_sun: "67,240,000"
+jupiter = Planet.new name: "Jupiter", radius: "43,441", orbital_period: "12 years", distance_from_sun: "483,800,000"
+saturn  = Planet.new name: "Saturn", radius: "36,184", orbital_period: "29 years", distance_from_sun: "890,700,000"
+uranus  = Planet.new name: "Uranus", radius: "15,759", orbital_period: "84 years", distance_from_sun: "1,787,000,000"
+neptune = Planet.new name: "Neptune", radius: "15,299", orbital_period: "165 years", distance_from_sun: "2,795,000,000"
 
 planets = {
   "Mercury" => mercury,
