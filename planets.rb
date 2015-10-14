@@ -3,13 +3,17 @@
     attr_accessor :name, :color, :composition, :rings, :size, :distance_from_sun
 
     def initialize(attr)
-      puts attr[:name].inspect
+
       @name                 = attr[:name]
       @color                = attr[:color]
       @composition          = attr[:composition]
       @rings                = attr[:rings]
       @size                 = attr[:size]
       @distance_from_sun    = attr[:distance_from_sun]
+    end
+
+    def formatted_string
+      @formatted_string ="\n#{@name} is a #{@color} planet.\nIt is made up of #{@composition } and has #{@rings} rings.\n#{@name} is a #{@size} size planet and is #{@distance_from_sun} miles from the sun."
     end
 
   end
@@ -96,23 +100,22 @@
   end
 
 
-    solar = SolarSystem.new(planets)
+  solar = SolarSystem.new(planets)
 
 
   name = ''
   while name != 'exit' do
 
 
-    puts "What planet from our solar system would you like to know about?
-    (Mercury,Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto)."
+    puts "\nWhat planet from our solar system would you like to know about?\n(Mercury // Venus // Earth // Mars // Jupiter // Saturn // Uranus // Neptune // Pluto)."
 
     name = gets.chomp
 
     if planets.keys.include?(name.downcase.to_sym)
-      puts "You would like to know about #{name.capitalize}"
+      puts "You would like to know about #{name.capitalize}."
 
-      puts "#{name.capitalize} is a #{planets[name.downcase.to_sym].color} planet.
-      It is made up of #{planets[name.downcase.to_sym].composition} and has #{planets[name.downcase.to_sym].rings} rings. #{name.capitalize} is a #{planets[name.downcase.to_sym].size} sized planet and is #{planets[name.downcase.to_sym].distance_from_sun} miles from the sun."
+      puts planets[name.downcase.to_sym].formatted_string
+
     else
       puts "Please put a planet from our solar system"
     end
