@@ -32,12 +32,6 @@ planets = [
    number_of_moons: 14,days_in_a_year: 60190.03}
 ]
 
-# TESTING TO MAKE SURE HASH VALUES CAN BE CALLED UPON
-# puts planets
-# puts
-# puts planets.map {|p| p[:name]} # <-- this works
-# puts planets.map {|p| p[:index_from_sun]} # <-- this works
-
 class Planet #now attributes can come from constructor
   attr_accessor :name,
                 :index_from_sun,
@@ -47,46 +41,52 @@ class Planet #now attributes can come from constructor
                 :number_of_moons,
                 :days_in_a_year #Earth days
 
-  def initialize(attrs)
-    @name = attrs[:name]
-    @index_from_sun = attrs[:index_from_sun]
-    @distance_from_sun = attrs[:distance_from_sun]
-    @mass = attrs[:mass]
-    @date_discovered = attrs[:date_discovered]
-    @number_of_moons = attrs[:number_of_moons]
-    @days_in_a_year = attrs[:days_in_a_year]
+  def initialize(p)
+    @name = p[:name]
+    @index_from_sun = p[:index_from_sun]
+    @distance_from_sun = p[:distance_from_sun]
+    @mass = p[:mass]
+    @date_discovered = p[:date_discovered]
+    @number_of_moons = p[:number_of_moons]
+    @days_in_a_year = p[:days_in_a_year]
   end
 end
 
-solar_system = planets.map {|hash_attrs| Planet.new hash_attrs}
+all_planets = planets.map {|planet_hash| Planet.new planet_hash}
 #what happens if we instantiate but don't assign to a variable?
 
-puts solar_system.first.class
-#^ this works -- so we know Planets have been created!
+puts all_planets.first.class
+# ^this works - so we know Planet class has been created!
 
-# puts solar_system.first.name
-# ^this works
+# puts all_planets.first.name
+# ^this works - call Planet class methods on invdiv Planet objects
 
-# solar_system.each {|p| puts p.name}
-# ^this works
+# all_planets.each {|p| puts p.name}
+# ^this works - call Pl class methods on Pl objects w/ iterator
 
-# class SolarSystem
-#
-#   def initialize(planets)
-#     @planets = planets #instance variable calls on ... hash?
-#   end
-#
-#   def list_planets
-#     @planets
-#   end
-#
-# end
-#
-# ss = SolarSystem.new(planets)
-#
-# puts ss
+class SolarSystem
 
+  def initialize(planets)
+    @planets = planets #instance variable calls on ... hash? Bookis, let's discuss!
+  end
 
+  def planets
+    @planets
+  end
+
+end
+
+ss = SolarSystem.new(planets)
+
+puts ss.class
+# ^this works - so we know instance of SolarSystem class exists!
+
+puts ss.planets.first[:name]
+# ^this works but is confusing. Is this how msg cycle is working?
+# 1)Call SolarSystem class method 'planets' on instance of SolSys
+# 1a)which creates.... [need to continue thinking through this]
+
+# don't think I need the below code any more.
 # puts SolarSystem.class # <- class
 
 # class SolarSystem
