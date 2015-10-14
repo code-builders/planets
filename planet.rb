@@ -1,4 +1,11 @@
 class Planet
+  attr_accessor :name,
+                :mass,
+                :diameter,
+                :moon,
+                :average_temp,
+                :distance_from_the_sun,
+                :num_from_the_sun
 
   def initialize(name, mass, diameter, moon, average_temp, distance_from_the_sun, num_from_the_sun)
     @name = name
@@ -11,34 +18,6 @@ class Planet
       num_from_the_sun = num_from_the_sun + " "
     end
     @num_from_the_sun = num_from_the_sun
-  end
-
-  def name
-    @name
-  end
-
-  def mass
-    @mass
-  end
-
-  def diameter
-    @diameter
-  end
-
-  def moon
-    @moon
-  end
-
-  def average_temp
-    @average_temp
-  end
-
-  def distance_from_the_sun
-    @distance_from_the_sun
-  end
-
-  def num_from_the_sun
-    @num_from_the_sun
   end
 
   def info
@@ -65,7 +44,7 @@ planet7 = Planet.new("Uranus", "8.7 x 10^25 kg", "31,518 miles", "27", "-357 deg
 planet8 = Planet.new("Neptune", "1.0 x 10^26 kg", "30,599 miles", "14", "-353 degrees Fahrenheit", "2.795 billion miles", "eighth")
 
 puts "Select a planet you would like to learn more about by typing its name."
-puts "1. Mercury, 2. Venus, 3. Earth, 4. Mars, 5. Jupiter, 6. Saturn, 7. Uranus, 8. Neptue, or type \"done\" when finished."
+puts "1. Mercury, 2. Venus, 3. Earth, 4. Mars, 5. Jupiter, 6. Saturn, 7. Uranus, 8. Neptune, or type \"done\" when finished."
 
 planet_name = ""
 
