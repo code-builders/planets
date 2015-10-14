@@ -1,4 +1,4 @@
-solar_system = [
+planets = [
   {name: "Mercury",index_from_sun: 1,distance_from_sun: 0.4,
    mass: 0.06,date_discovered: "2nd millenium B.C.E.",
    number_of_moons: 0,days_in_a_year: 87.97},
@@ -33,13 +33,12 @@ solar_system = [
 ]
 
 # TESTING TO MAKE SURE HASH VALUES CAN BE CALLED UPON
-# puts solar_system
+# puts planets
 # puts
-# puts solar_system.map {|p| p[:name]} # <-- this works
-# puts solar_system.map {|p| p[:index_from_sun]} # <-- this works
+# puts planets.map {|p| p[:name]} # <-- this works
+# puts planets.map {|p| p[:index_from_sun]} # <-- this works
 
-class Planet #now attributes come from constructor
-
+class Planet #now attributes can come from constructor
   attr_accessor :name,
                 :index_from_sun,
                 :distance_from_sun, #in AU ('Astronomical Units')
@@ -57,8 +56,46 @@ class Planet #now attributes come from constructor
     @number_of_moons = attrs[:number_of_moons]
     @days_in_a_year = attrs[:days_in_a_year]
   end
-
 end
+
+solar_system = planets.map {|hash_attrs| Planet.new hash_attrs}
+#what happens if we instantiate but don't assign to a variable?
+
+puts solar_system.first.class
+#^ this works -- so we know Planets have been created!
+
+# puts solar_system.first.name
+# ^this works
+
+# solar_system.each {|p| puts p.name}
+# ^this works
+
+# class SolarSystem
+#
+#   def initialize(planets)
+#     @planets = planets #instance variable calls on ... hash?
+#   end
+#
+#   def list_planets
+#     @planets
+#   end
+#
+# end
+#
+# ss = SolarSystem.new(planets)
+#
+# puts ss
+
+
+# puts SolarSystem.class # <- class
+
+# class SolarSystem
+#   attr_accessor :planets
+#
+#   def initialize(attrs)
+#     @planets = attrs[:planets]
+#   end
+# end
 
 ###############################################################
 
